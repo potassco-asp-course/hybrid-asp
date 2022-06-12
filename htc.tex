@@ -1,13 +1,95 @@
+\newcommand{\Variables}{\ensuremath{\mathcal{X}}}
+\newcommand{\Domain}{\ensuremath{\mathcal{D}}}
+\newcommand{\Atoms}{\ensuremath{\mathcal{A}}}
+\newcommand{\ThAt}{\mathit{a}}
+\newcommand{\Undefined}{\ensuremath{\boldsymbol{u}}}
+%\newcommand{\DomainU}{\ensuremath{\Domain_{\Undefined}}}
+\newcommand{\val}{v}
+\newcommand{\den}[1]{\llbracket \, #1 \, \rrbracket}
+% \newcommand{\eqdef}{\ensuremath{\mathbin{\raisebox{-1pt}[-3pt][0pt]{$\stackrel{\mathit{def}}{=}$}}}}
+
 % ----------------------------------------------------------------------
-\begin{frame}{HT$_C$}{Syntax}
+\begin{frame}{\HTC\ \ Syntax}
   \begin{itemize}
-  \item
+  \item \structure{Signature} \ \tuple{\Variables,\Domain,\Atoms}
+    \begin{itemize}
+    \item \Variables\ \ variables
+    \item \Domain\    \ domain
+    \item \Atoms\     \ atoms
+    \end{itemize}
+    \smallskip
+  \item<2-> \structure{Note} \ The syntax of atoms is left open
+  \item<2-> \structure{Example} \ ``$x - y \leq d$'' with $x, y \in \Variables$ and $d \in \Domain$
+    \medskip
+  \item<3-> \structure{\HTC-formula} \ $\varphi$ \ over \ \Atoms\
+    \begin{align*}
+      \varphi \ ::= \ \bot \ \mid \ \ThAt\ \mid \ \varphi \land \varphi \ \mid \  \varphi \lor \varphi \ \mid \  \varphi \rightarrow \varphi \quad\text{ where } \ThAt \in \Atoms
+    \end{align*}
+
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}{HT$_C$}{Semantics}
+\begin{frame}{\HTC\ \ Semantics}
   \begin{itemize}
-  \item
+  \item \structure{Valuation} \ $\val: \Variables \rightarrow {\Domain \cup \{\Undefined\}}$
+    \begin{itemize}
+    \item $\Undefined \notin \Variables \cup \Domain$ stands for undefined
+    \end{itemize}
+  \item[] \structure{Set-based representation} \ $\val \subseteq \Variables \times \Domain$
+    \begin{itemize}
+    \item $(x,c)\in\val$ and $(x,d)\in\val$ implies $c = d$
+    \item $(x,d)\notin\val$ if $\val(x)=\Undefined$
+    \end{itemize}
+  \item[] $\mathcal{V}$ is the set of all valuations over \Variables\ and \Domain\
+    \medskip
+  \item<2-> \structure{Atom denotation} \ $\den{\cdot}: \Atoms \rightarrow 2^{\mathcal{V}}$
+  \item<3-> \structure{Example} \
+    \[
+    \den{\text{``}{x - y \leq d}\text{''}}
+    =
+    \{v\in\mathcal{V}\mid v(x),v(y), \ d \in \mathbb{Z}, \ v(x)-v(y)\leq d\}
+    \]
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{\HTC-satisfaction}
+  \begin{itemize}
+  \item \structure{\HTC-interpretation} \ over \Variables,\Domain\ is a pair \tuple{h,t}
+    of valuations over \Variables,\Domain\ such that $h\subseteq t$
+    \bigskip
+  \item<2-> An \HTC-interpretation $\tuple{h,t}$ satisfies a formula $\varphi$,
+    written $\tuple{h,t} \models \varphi$, if the following conditions hold
+    \begin{enumerate}\normalsize
+    \item $\tuple{h,t} \not\models \bot$
+    \item $\tuple{h,t} \models \ThAt$ if both $h \in \den{\ThAt}$ and~$t \in \den{\ThAt}$ for~$\ThAt \in \Atoms$
+    \item $\tuple{h,t} \models \varphi \wedge \psi$ if $\tuple{h,t} \models \varphi$ and $\tuple{h,t} \models \psi$
+    \item $\tuple{h,t} \models \varphi \vee \psi$ if $\tuple{h,t} \models \varphi$ or $\tuple{h,t} \models \psi$
+    \item $\tuple{h,t} \models \varphi \to \psi$ if $\tuple{h',t} \not\models \varphi$ or $\tuple{h',t} \models \psi$
+      \\ for both $h' = h$ and $h' = t$.
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{\HTC-equilibrium model}
+  \begin{itemize}
+  \item A total interpretation \tuple{t,t} is an \alert{equilibrium model} of\\
+    a formula $\varphi$,
+    if
+    \par
+    \smallskip
+    \begin{enumerate}\normalsize
+    \item
+      \(
+      \tuple{t,t}\models\varphi
+      \)
+    \item
+      \(
+      \tuple{h,t}\not\models\varphi
+      \)
+      for all $h\subset t$
+    \end{enumerate}
+    \smallskip
+  \item <2-> $t$ is called an \HTC-\alert{stable model} of $\varphi$
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
