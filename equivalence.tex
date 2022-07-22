@@ -1,0 +1,38 @@
+\newcommand{\code}[1]{\ensuremath{\mathtt{#1}}} % {\texttt{#1}}
+\newcommand{\diffc}[3]{\code{\&diff\{\mathit{#1}-\mathit{#2}\} \ \mbox{\tt <=} \ \mathit{#3}}}
+% ----------------------------------------------------------------------
+\begin{frame}[fragile]{Equivalence in \clingcon}
+\begin{semiverbatim}
+
+                     a :- &sum\{ x; y \} = 4.
+      &sum\{ y; z \} = 2 :- a.\pause
+
+
+                     a :- &sum\{ x; y \} = 4.
+                       :- a, not &sum\{ y; z \} = 2.\pause
+
+
+                     a :- &sum\{ x; y \} = 4.
+                       :- a, &sum\{ y; z \} != 2.
+\end{semiverbatim}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}[fragile]{Equivalence \clingodl}
+\begin{semiverbatim}
+
+                 margin :- &diff\{ x-y \} <= 10.
+      &diff\{ x-y \} <= 0 :- not margin.
+      &diff\{ y-x \} <= 0 :- not margin.\pause
+
+
+                 margin :- &diff\{ x-y \} <= 10.
+                        :- &diff\{ y-x \} <= -1, not margin.
+                        :- &diff\{ x-y \} <= -1, not margin.
+\end{semiverbatim}
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:

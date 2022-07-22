@@ -1,0 +1,19 @@
+% ----------------------------------------------------------------------
+\begin{frame}{\HTC-based Semantics}
+  \bigskip
+  \[
+    \begin{array}{rp{5pt}rcl}
+                     && a         &\leftarrow&  x-y\leq 4          \\
+                     && z-y\leq2  &\leftarrow&  a                  \\[20pt]\pause
+    \text{\clingcon} && \multicolumn{3}{l}{x-y\leq 4 \lor x-y > 4} \\
+                     && \multicolumn{3}{l}{z-y\leq 2 \lor z-y>2}   \\[20pt]\pause
+    \text{\clingodl} && \multicolumn{3}{l}{x-y\leq 4 \lor x-y > 4}
+    \end{array}
+  \]
+\end{frame}
+% ----------------------------------------------------------------------
+%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../../main"
+%%% End:
