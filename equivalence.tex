@@ -1,13 +1,13 @@
 % ----------------------------------------------------------------------
 \begin{frame}[fragile]{Equivalence}{\clingcon}
   \begin{semiverbatim}
-                     a :- &sum\{ x; y \} = 4.
-      &sum\{ y; z \} = 2 :- a.
+                           a :- &sum\{ x; y \} = 4.
+            &sum\{ y; z \} = 2 :- a.
   \end{semiverbatim}
   \begin{align*}
-                             a & \leftarrow  (x-y\leq 4)\\
+                             a & \leftarrow  (x-y\leq 4)\qquad\qquad\\
                    (z-y\leq 2) & \leftarrow  a          \\
-    (x-y\leq 4) \vee (x-y > 4) & \\
+    (x-y\leq 4) \vee (x-y > 4) &                        \\
     (z-y\leq 2) \vee (z-y > 2) &
   \end{align*}
 \end{frame}
