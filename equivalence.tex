@@ -1,5 +1,28 @@
-\newcommand{\code}[1]{\ensuremath{\mathtt{#1}}} % {\texttt{#1}}
-\newcommand{\diffc}[3]{\code{\&diff\{\mathit{#1}-\mathit{#2}\} \ \mbox{\tt <=} \ \mathit{#3}}}
+% ----------------------------------------------------------------------
+\begin{frame}[fragile]{Equivalence}{\clingcon}
+  \begin{semiverbatim}
+
+                     a :- &sum\{ x; y \} = 4.
+      &sum\{ y; z \} = 2 :- a.
+  \end{semiverbatim}
+  \begin{align*}
+                             a & \leftarrow  (x-y\leq 4)\\
+                   (z-y\leq 2) & \leftarrow  a          \\
+    (x-y\leq 4) \vee (x-y > 4) & \\
+    (z-y\leq 2) \vee (z-y > 2) &
+  \end{align*}
+\end{frame}
+% ----------------------------------------------------------------------
+\begin{frame}{Equivalence at work}{\clingcon}
+  \begin{align*}
+                                                      a  & \leftarrow  (x-y\leq 4)\\
+                                 \only<1-2>{(z-y\leq 2)} & \alt<3->{\leftarrow \neg (z-y\leq 2) \wedge a}{\leftarrow  a} \\
+    (x-y\leq 4)\vee                           (x-y > 4)  & \\
+    (z-y\leq 2)\vee\alt<2->{\neg (z-y\leq 2)}{(z-y > 2)} & \\
+                             \only<2->{z=z}              & \\
+                             \only<2->{y=y}              &
+  \end{align*}
+\end{frame}
 % ----------------------------------------------------------------------
 \begin{frame}[fragile]{Equivalence in \clingcon}
 \begin{semiverbatim}
