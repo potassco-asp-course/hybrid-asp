@@ -1,8 +1,8 @@
 % ----------------------------------------------------------------------
 \begin{frame}[fragile]{Equivalence}{\clingcon}
   \begin{semiverbatim}
-                           a :- &sum\{ x;-y \} = 4.
-            &sum\{ z;-y \} = 2 :- a.
+                           a :- &sum\{ x;-y \} <= 4.
+            &sum\{ z;-y \} <= 2 :- a.
   \end{semiverbatim}
   \begin{align*}
                              a & \leftarrow  (x-y\leq 4)\qquad\qquad\\
@@ -26,16 +26,16 @@
 \begin{frame}[fragile]{Equivalence in \clingcon}
 \begin{semiverbatim}
 
-                     a :- &sum\{ x;-y \} = 4.
-      &sum\{ z;-y \} = 2 :- a.\pause
+                     a :- &sum\{ x;-y \} <= 4.
+      &sum\{ z;-y \} <= 2 :- a.\pause
 
 
-                     a :- &sum\{ x;-y \} = 4.
-                       :- a, not &sum\{ z;-y \} = 2.\pause
+                     a :- &sum\{ x;-y \} <= 4.
+                       :- a, not &sum\{ z;-y \} <= 2.\pause
 
 
-                     a :- &sum\{ x;-y \} = 4.
-                       :- a, &sum\{ z;-y \} != 2.
+                     a :- &sum\{ x;-y \} <= 4.
+                       :- a, &sum\{ z;-y \} > 2.
 \end{semiverbatim}
 \end{frame}
 % ----------------------------------------------------------------------
