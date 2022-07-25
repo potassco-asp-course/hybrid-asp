@@ -35,15 +35,15 @@
     \begin{itemize}
     \item $\Undefined \notin \Variables \cup \Domain$ stands for undefined
     \end{itemize}
-  \item[] \structure{Set-based representation} \ $\val \subseteq \Variables \times \Domain$
+  \item<2->[] \structure{Set-based representation} \ $\val \subseteq \Variables \times \Domain$
     \begin{itemize}
     \item $(x,c)\in\val$ and $(x,d)\in\val$ implies $c = d$
     \item $(x,d)\notin\val$ if $\val(x)=\Undefined$
     \end{itemize}
   \item[] $\mathcal{V}$ is the set of all valuations over \Variables\ and \Domain\
     \medskip
-  \item<2-> \structure{Atom denotation} \ $\den{\cdot}: \Atoms \rightarrow 2^{\mathcal{V}}$
-  \item<3-> \structure{Example} \
+  \item<3-> \structure{Atom denotation} \ $\den{\cdot}: \Atoms \rightarrow 2^{\mathcal{V}}$
+  \item<4-> \structure{Example} \
     \[
     \den{\text{``}{x - y \leq d}\text{''}}
     =
