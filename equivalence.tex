@@ -39,19 +39,19 @@
 \end{semiverbatim}
 \end{frame}
 % ----------------------------------------------------------------------
-\begin{frame}[fragile]{Equivalence \clingodl}
-\begin{semiverbatim}
-
-                 margin :- &diff\{ x-y \} <= 10.
-      &diff\{ x-y \} <= 0 :- not margin.
-      &diff\{ y-x \} <= 0 :- not margin.\pause
-
-
-                 margin :- &diff\{ x-y \} <= 10.
-                        :- &diff\{ y-x \} <= -1, not margin.
-                        :- &diff\{ x-y \} <= -1, not margin.
-\end{semiverbatim}
-\end{frame}
+% \begin{frame}[fragile]{Equivalence \clingodl}
+% \begin{semiverbatim}
+%
+%                  margin :- &diff\{ x-y \} <= 10.
+%       &diff\{ x-y \} <= 0 :- not margin.
+%       &diff\{ y-x \} <= 0 :- not margin.\pause
+%
+%
+%                  margin :- &diff\{ x-y \} <= 10.
+%                         :- &diff\{ y-x \} <= -1, not margin.
+%                         :- &diff\{ x-y \} <= -1, not margin.
+% \end{semiverbatim}
+% \end{frame}
 % ----------------------------------------------------------------------
 %
 %%% Local Variables:
