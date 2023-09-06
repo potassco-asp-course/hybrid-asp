@@ -2,20 +2,20 @@
 \begin{frame}{Open and Closed world reasoning}{on numeric domains}
   \bigskip
   \begin{itemize}
-  \item<1-> \structure{Closed world reasoning}
+  \item<1-> \structure{Open world reasoning}
+    \begin{itemize}
+    \item if a variable occurs in true constraints, it is assigned appropriate values
+    \item if a variable occurs in no constraint, it takes all possible values
+    \end{itemize}
+  \item<only@3->[] is monotonic
+  \item<only@1-2>[]
+  \item<2-> \structure{Closed world reasoning}
     \begin{itemize}
     \item if a variable occurs in true constraints, it is assigned appropriate values
     \item if a variable occurs in no constraint, it is undefined
     \end{itemize}
   \item<only@3->[] is non-monotonic
   \item<only@4->[] offers defaults, succinctness
-  \item<only@1-3>[]
-  \item<2-> \structure{Open world reasoning}
-    \begin{itemize}
-    \item if a variable occurs in true constraints, it is assigned appropriate values
-    \item if a variable occurs in no constraint, it takes all possible values
-    \end{itemize}
-  \item<only@3->[] is monotonic
   \end{itemize}
 \end{frame}
 % ----------------------------------------------------------------------
